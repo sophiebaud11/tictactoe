@@ -14,7 +14,6 @@ turncount = 0
 @app.route("/")
 def index():
     global turncount
-    turncount = 0
     print(turncount)
     if "board" not in session:
         session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
