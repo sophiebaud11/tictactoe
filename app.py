@@ -14,6 +14,8 @@ turncount = 0
 @app.route("/")
 def index():
     global turncount
+    turncount = 0
+    print(turncount)
     if "board" not in session:
         session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
         session["turn"] = "X"
@@ -71,4 +73,6 @@ def minimax(game,turn):
 @app.route("/reset")
 def reset():
     session.clear()
-    return redirect(url_for("index"))
+    global turncount
+    turncount = 0
+    return redirect(url_for("index", turncount=turncount))
